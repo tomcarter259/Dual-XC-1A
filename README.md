@@ -38,6 +38,51 @@ sessions and so it must be done manually.
 To Run
 ------
 
+Find the adapter IDs of both XMOS boards by running this command in an XMOS command
+prompt, with both boards attached via USB:
+
+	xrun -l
+
+Start two xgdb sessions in seperate XMOS command prompts:
+
+	xgdb boardA.xe
+
+	xgdb boardB.xe
+
+Connect one session to each XC-1A board:
+
+	connect --adapter-id <adapterid>
+
+Both first stage loaders must now be run within one second of each other. This is
+because the XMOS links are muxed with ports and the ports have to be driven low on 
+both sides before the links are enabled. The first stage loader drives the ports low 
+waits 1 second then enables the ports. 
+
+The easiest method is to type 'run' in each command prompt first, and then attempt to
+press return in them both as fast as possible. 
+
+If that works, halt both sessions (ctrl + c).
+
+Select the appropriate executable in each command prompt:
+
+	file appA.xe
+
+	file appB.xe
+
+Reconnect to the XMOS boards (make sure to use the same adapter ID!):
+
+	connect --adapter-id <adapterid> --noreset
+
+Load the program
+
+	load
+
+Finally, run them
+
+	continue
+
+If all has gone well, you will see output printed to the command prompt and button
+lights illuminate on both boards.
 
 
 
