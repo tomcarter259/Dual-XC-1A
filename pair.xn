@@ -1,0 +1,38 @@
+<Network>
+
+  <Declarations>
+    <Declaration>core stdcore[8]</Declaration>
+  </Declarations>
+
+  <Nodes>
+    <Node Number="0" Type="XS1-G4A-FB512">
+      <Core Number="0" Reference="stdcore[0]"/>
+      <Core Number="1" Reference="stdcore[1]"/>
+      <Core Number="2" Reference="stdcore[2]"/>
+      <Core Number="3" Reference="stdcore[3]"/>
+    </Node>
+    <Node Number="1" Type="XS1-G4A-FB512">
+      <Core Number="0" Reference="stdcore[4]"/>
+      <Core Number="1" Reference="stdcore[5]"/>
+      <Core Number="2" Reference="stdcore[6]"/>
+      <Core Number="3" Reference="stdcore[7]"/>
+    </Node>
+  </Nodes>
+
+  <Links>
+    <Link Encoding="5wire" Delays="15,15">
+      <LinkEndpoint Node="0" Link="10"/>
+      <LinkEndpoint Node="1" Link="10"/>
+    </Link>
+  </Links>
+
+  <Boot>
+    <JTAGChain>
+       <JTAGDevice Node="0"/>
+       <JTAGDevice Node="1"/>
+    </JTAGChain>
+    <SPIBoot Node="0"/>
+  </Boot>
+
+</Network>
+
