@@ -4,16 +4,18 @@
 void one( chanend outChan, chanend andBackChan )
 {
   int a=23;
-  printstr("In one...\n");
+  printstr("Message sent\n");
   outChan <: a;
   andBackChan :> a;
-  printstr("Got response...\n");
+  printstr("Reply received\n");
 }
 
 void two( chanend outChan, chanend andBackChan )
 {
   int a;
   outChan :> a;
+  printstr("Message received\n");
+  printstr("Reply sent\n");
   andBackChan <: a;
 }
 
