@@ -6,8 +6,11 @@ copy empty.xe boardB.xe
 copy empty.xe appA.xe
 copy empty.xe appB.xe
 
+:: compile the test program
+xcc pair.xn test.xc -o dual.xe
+
 :: split real executable
-xobjdump --split "Dual.xe"
+xobjdump --split "dual.xe"
 
 :: create new executables
 xobjdump boardA.xe -a "%XCC_DEVICE_PATH%/config_XS1-G4B-FB512.xml"
