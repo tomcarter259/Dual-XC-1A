@@ -20,7 +20,7 @@ Connect your XMOS link cable between X3PortA on the first board and X3PortA on t
 second. Note the cable must have a twist in it, so XLA0 1 on the first board is
 connected to XLA0 1 on the second.
 
-See page 9 of the [XC-1A Hardware Manual][manual] for I/O pin mapping.
+See page 9 of the [XC-1A Hardware Manual][manual] (pdf) for I/O pin mapping.
 
 To Build
 --------
