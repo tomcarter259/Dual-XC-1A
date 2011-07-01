@@ -1,38 +1,100 @@
-<Network>
+<?xml version="1.0" encoding="UTF-8"?>
+<Network xmlns="http://www.xmos.com"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
 
   <Declarations>
     <Declaration>core stdcore[8]</Declaration>
   </Declarations>
 
-  <Nodes>
-    <Node Number="0" Type="XS1-G4A-FB512">
-      <Core Number="0" Reference="stdcore[0]"/>
-      <Core Number="1" Reference="stdcore[1]"/>
-      <Core Number="2" Reference="stdcore[2]"/>
-      <Core Number="3" Reference="stdcore[3]"/>
-    </Node>
-    <Node Number="1" Type="XS1-G4A-FB512">
-      <Core Number="0" Reference="stdcore[4]"/>
-      <Core Number="1" Reference="stdcore[5]"/>
-      <Core Number="2" Reference="stdcore[6]"/>
-      <Core Number="3" Reference="stdcore[7]"/>
-    </Node>
-  </Nodes>
+  <Packages>
+    <Package id="P0" Type="XS1-G4B-FB512">
+      <Nodes>
+        <Node Id="0" InPackageId="0" Type="XS1-G4B" Oscillator="20MHz" SystemFrequency="400MHz">
+          <Boot>
+            <Source Location="SPI:bootFlash"/>
+          </Boot>
+          <Core Number="0" Reference="stdcore[0]">
+            <Port Location="XS1_PORT_1A" Name="PORT_SPI_MISO_0"/>
+            <Port Location="XS1_PORT_1B" Name="PORT_SPI_SS_0"/>
+            <Port Location="XS1_PORT_1C" Name="PORT_SPI_CLK_0"/>
+            <Port Location="XS1_PORT_1D" Name="PORT_SPI_MOSI_0"/>
+            <Port Location="XS1_PORT_1E" Name="PORT_CLOCKLED_SELG_0"/>
+            <Port Location="XS1_PORT_1F" Name="PORT_CLOCKLED_SELR_0"/>
+            <Port Location="XS1_PORT_4C" Name="PORT_BUTTONLED_0"/>
+            <Port Location="XS1_PORT_4D" Name="PORT_BUTTON_0"/>
+            <Port Location="XS1_PORT_1H" Name="PORT_UART_TX_0"/>
+            <Port Location="XS1_PORT_1I" Name="PORT_UART_RX_0"/>
+            <Port Location="XS1_PORT_1K" Name="PORT_SPEAKER_0"/>
+            <Port Location="XS1_PORT_8D" Name="PORT_CLOCKLED_0_0"/>
+          </Core>
+          <Core Number="1" Reference="stdcore[1]">
+            <Port Location="XS1_PORT_8D" Name="PORT_CLOCKLED_1_0"/>
+          </Core>
+          <Core Number="2" Reference="stdcore[2]">
+            <Port Location="XS1_PORT_8D" Name="PORT_CLOCKLED_2_0"/>
+          </Core>
+          <Core Number="3" Reference="stdcore[3]">
+            <Port Location="XS1_PORT_8D" Name="PORT_CLOCKLED_3_0"/>
+          </Core>
+        </Node>
+      </Nodes>
+    </Package>
+    <Package id="P1" Type="XS1-G4B-FB512">
+      <Nodes>
+        <Node Id="1" InPackageId="0" Type="XS1-G4B" Oscillator="20MHz" SystemFrequency="400MHz">
+          <Boot>
+            <Source Location="SPI:bootFlash"/>
+          </Boot>
+          <Core Number="0" Reference="stdcore[4]">
+            <Port Location="XS1_PORT_1A" Name="PORT_SPI_MISO_1"/>
+            <Port Location="XS1_PORT_1B" Name="PORT_SPI_SS_1"/>
+            <Port Location="XS1_PORT_1C" Name="PORT_SPI_CLK_1"/>
+            <Port Location="XS1_PORT_1D" Name="PORT_SPI_MOSI_1"/>
+            <Port Location="XS1_PORT_1E" Name="PORT_CLOCKLED_SELG_1"/>
+            <Port Location="XS1_PORT_1F" Name="PORT_CLOCKLED_SELR_1"/>
+            <Port Location="XS1_PORT_4C" Name="PORT_BUTTONLED_1"/>
+            <Port Location="XS1_PORT_4D" Name="PORT_BUTTON_1"/>
+            <Port Location="XS1_PORT_1H" Name="PORT_UART_TX_1"/>
+            <Port Location="XS1_PORT_1I" Name="PORT_UART_RX_1"/>
+            <Port Location="XS1_PORT_1K" Name="PORT_SPEAKER_1"/>
+            <Port Location="XS1_PORT_8D" Name="PORT_CLOCKLED_0_1"/>
+          </Core>
+          <Core Number="1" Reference="stdcore[5]">
+            <Port Location="XS1_PORT_8D" Name="PORT_CLOCKLED_1_1"/>
+          </Core>
+          <Core Number="2" Reference="stdcore[6]">
+            <Port Location="XS1_PORT_8D" Name="PORT_CLOCKLED_2_1"/>
+          </Core>
+          <Core Number="3" Reference="stdcore[7]">
+            <Port Location="XS1_PORT_8D" Name="PORT_CLOCKLED_3_1"/>
+          </Core>
+        </Node>
+      </Nodes>
+    </Package>
+  </Packages>
 
   <Links>
     <Link Encoding="5wire" Delays="15,15">
-      <LinkEndpoint Node="0" Link="10"/>
-      <LinkEndpoint Node="1" Link="10"/>
+      <LinkEndpoint NodeId="0" Link="X3LA"/>
+      <LinkEndpoint NodeId="1" Link="X3LB"/>
     </Link>
   </Links>
 
-  <Boot>
-    <JTAGChain>
-       <JTAGDevice Node="0"/>
-       <JTAGDevice Node="1"/>
-    </JTAGChain>
-    <SPIBoot Node="0"/>
-  </Boot>
+  <ExternalDevices>
+    <Device NodeId="0" Core="0" Class="SPIFlash" Name="bootFlash" Type="AT25DF041A">
+      <Attribute Name="PORT_SPI_MISO" Value="PORT_SPI_MISO"/>
+      <Attribute Name="PORT_SPI_SS"   Value="PORT_SPI_SS"/>
+      <Attribute Name="PORT_SPI_CLK"  Value="PORT_SPI_CLK"/>
+      <Attribute Name="PORT_SPI_MOSI" Value="PORT_SPI_MOSI"/>
+    </Device>
+  </ExternalDevices>
+
+  <JTAGChain>
+    <JTAGDevice NodeId="0" Position="0"/>
+    <JTAGDevice NodeId="1" Position="1"/>
+  </JTAGChain>
 
 </Network>
+
 
