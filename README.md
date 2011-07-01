@@ -16,7 +16,7 @@ Walkthrough
 To Construct the XMOS Link
 --------------------------
 
-Connect your XMOS link cable between X3PortA on the first board and X3PortA on the
+Connect your XMOS link cable between X3PortA on the first board and X3PortB on the
 second. Note the cable must have a twist in it, so XLA0 1 on the first board is
 connected to XLA0 1 on the second.
 
